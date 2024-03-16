@@ -1,62 +1,89 @@
 
 import { useState } from "react";
-import { Text, ScrollView, StyleSheet, View } from "react-native";
+import { Text, ScrollView, StyleSheet, View, Image } from "react-native";
 import Button from "../components/button";
 
 import rewards from "../assets/rewards.json"
 
 const images = {
-    merch1: require("../assets/merch1.png")
+    "1": require("../assets/1.png")
 }
+
+const styles = StyleSheet.create({
+
+    scroll_container: {
+        // flexGrow: 1,
+        alignItems: 'center',
+    },
+
+    title: {
+        margin: 30,
+        fontSize: 50,
+        fontWeight: "bold",
+    },
+
+    tabs: {
+        flexDirection: "row",
+        width: "100%",
+    },
+
+    tab: {
+        marginLeft: 2,
+    },
+
+    reward: {
+        margin: 10,
+        height: 190,
+        borderWidth: 10,
+        borderRadius: 10,
+        backgroundColor: "black",
+    },
+
+    images: {
+        width: 370,
+        height: "75%",
+    },
+
+    info: {
+        flexDirection: "row",
+        flex: 1,
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginTop: 7,
+        marginLeft: 5,
+        marginRight: 5,
+    },
+
+    info_text: {
+        color: "white",
+        fontSize: 20,
+    }
+
+});
 
 function getRewards(category) {
 
-    for (let i=0; i<rewards.length; i++) {
-
-        if (category == "All" || rewards["genre"] == category) {
-
-
-
-        }
-
-    }
-
-    let filterRewards = rewards.filter(reward => category == "All" || reward["genre"] == category);
-    // return (
-    //     {filterRewards.map((genre, index) => (
-
-    //     ))}
-    // )
+    let filterRewards = rewards.filter(reward => (category == "All" || reward["genre"] == category));
+    return (
+        <View>
+            {filterRewards.map(({ _, DisplayName, price, id }) => (
+                <View key={id} style={styles.reward}>
+                    <Image style={styles.images} source={images[`${id}`]} />
+                    {/* <Image style={styles.images} source={require("../assets/1.png")} /> */}
+                    <View style={styles.info}>
+                        <Text style={styles.info_text}>{DisplayName}</Text>
+                        <Text style={styles.info_text}>CCC {price}</Text>
+                    </View>
+                </View>
+            ))}
+        </View>
+    );
 
 }
 
 export default function RewardsScreen({ route, navigation }) {
 
     const [tab, setTab] = useState("Merch");
-
-    const styles = StyleSheet.create({
-
-        scroll_container: {
-            flexGrow: 1,
-            alignItems: 'center',
-        },
-
-        title: {
-            margin: 30,
-            fontSize: 50,
-            fontWeight: "bold",
-        },
-
-        tabs: {
-            flexDirection: "row",
-            width: "100%",
-        },
-
-        tab: {
-            marginLeft: 2,
-        },
-
-    });
 
     function getTabBar() {
 

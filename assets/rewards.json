@@ -1,7 +1,8 @@
 [
     {
-        "genre": "merch",
-        "name": "Jumper",
-        "price": 20000
+        "genre": "Merch",
+        "DisplayName": "Jumper",
+        "price": 20000,
+        "id": "1"
     }
 ]
