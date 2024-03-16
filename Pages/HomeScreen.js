@@ -1,10 +1,10 @@
-import { View, Text, Button, Image, StyleSheet } from "react-native"
 
+import { ScrollView, View, Text, Button, Image, StyleSheet } from "react-native"
 
 
 export default HomeScreen = ({ navigation }) => {
     return (
-        <View style={styles.container}>
+        <ScrollView contentContainerStyle={styles.container}>
             <Image
                 source={require('../assets/pfp.png')}
                 style={styles.pfp}
@@ -15,19 +15,33 @@ export default HomeScreen = ({ navigation }) => {
             <Text style={styles.points}>0 Points</Text>
 
             <Button
-                title="Rewards"
-                style={styles.rewards} 
+                title="Rewards ->"
+                style={styles.rewards}
                 onPress={() =>
                     navigation.navigate('Rewards', { name: 'Jane' })
                 }
             />
-        </View>
+
+            <Text style={styles.past_transactions}>Transaction History</Text>
+
+            
+            <View style={styles.row}>
+                <Text style={styles.row_item}>Date</Text>
+                <Text style={styles.row_item}>Cost</Text>
+                <Text style={styles.row_item}>Type</Text>
+                <Text style={styles.row_item}>Carbon Saved</Text>
+                <Text style={styles.row_item}>Points Earned</Text>
+            </View>
+
+            <View style={styles.footer} />
+
+        </ScrollView>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flexGrow: 1,
         alignItems: 'center',
     },
     pfp: {
@@ -40,9 +54,28 @@ const styles = StyleSheet.create({
         fontSize: 30
     },
     points: {
-        fontSize: 15
+        fontSize: 15,
+        marginBottom: 175
     },
     rewards: {
-        marginTop: 150
+        color: "black",
+        width: "10%",
+    },
+    past_transactions: {
+        fontSize: 30,
+        padding: 20,
+    },
+    row: {
+        flexDirection: "row",
+        width: "90%",
+        justifyContent: "space-evenly",
+        backgroundColor: "#43DEC9",
+        borderRadius: 5,
+    },
+    row_item: {
+        padding: 10,
+    },
+    footer: {
+        marginBottom: 50,
     }
 })
