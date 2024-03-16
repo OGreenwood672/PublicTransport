@@ -14,6 +14,7 @@ export default App = () => {
         <Stack.Screen
           name="Home"
           component={ HomeScreen }
+          initialParams={{ username: 'Greenwood' }}
           // options={{title: 'Welcome'}}
         />
         <Stack.Screen name="Rewards" component={ RewardsScreen } />
