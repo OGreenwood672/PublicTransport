@@ -1,6 +1,8 @@
 
-import { ScrollView, View, Text, Button, Image, StyleSheet } from "react-native";
+import { ScrollView, View, Text, Image, StyleSheet } from "react-native";
 import { DataTable } from 'react-native-paper'; 
+
+import Button from "../components/button";
 
 
 import data from "../assets/backend.json";
@@ -8,7 +10,7 @@ import data from "../assets/backend.json";
 
 function getTransactionTable(details) {
 
-    if (details["history"].length > 0) {
+    if ("history" in details && details["history"].length > 0) {
         return (
             <View style={styles.table}>
                 <Text style={styles.past_transactions}>Transaction History</Text>
@@ -40,41 +42,59 @@ function getDetails(name) {
             return data[i];
         }
     }
-    return null;
+    return {
+        "points": 0
+    }
 
 }
 
 export default HomeScreen = ({ route, navigation }) => {
 
-    details = getDetails(route.params.username);
-
-    const imageName = details["name"];
-    const imagePath = `../assets/Greenwood.png`;
+    details = getDetails(route.params.name);
 
     return (
-        <ScrollView contentContainerStyle={styles.container}>
-            <Image
-                source={require(imagePath)}
-                style={styles.pfp}
-            />
+        <View style={styles.whole_container}>
+            <ScrollView contentContainerStyle={styles.container}>
 
-            <Text style={styles.name}>{details["name"]}</Text>
+                <Text style={{marginTop: 20}}>Hey,</Text>
+                <Text style={styles.name}>{route.params.name}</Text>
 
-            <Text style={styles.points}>{details["points"]} Points</Text>
+                <View style={styles.cool_container}>
+                    <View style={[{flexDirection: "row"}, {marginBottom: 5}]}>
+                        <Text>Coin Balance</Text>
+                    </View>
+                    <Text style={styles.heading}>CCC: {details["points"]}</Text>
+                </View>
 
-            <Button
-                title="Rewards ->"
-                style={styles.rewards}
-                onPress={() =>
-                    navigation.navigate('Rewards', { name: details["name"] })
-                }
-            />
+                <View style={[styles.data_box, styles.cool_container]}>
 
-            {getTransactionTable(details)}
+                    <View style={styles.sub_data_box}>
+                        <Text>Total Earned</Text>
+                        <Text>^ 4.5%</Text>
+                    </View>
+                    <View style={styles.sub_data_box}>
+                        <Text>Total Spent</Text>
+                        <Text>:( 3.5%</Text>
+                    </View>
 
-            <View style={styles.footer} />
+                </View>
 
-        </ScrollView>
+                <View style={styles.cool_container}>
+                    {getTransactionTable(details)}
+                </View>
+
+            </ScrollView>
+            <View style={styles.absolute_container}>
+                {Button(
+                    "Rewards",
+                    "white",
+                    "black",
+                    110,
+                    65,
+                    () => navigation.navigate('Rewards', { name: details["name"] })
+                )}
+            </View>
+        </View>
     );
 };
 
@@ -83,23 +103,24 @@ const styles = StyleSheet.create({
         flexGrow: 1,
         alignItems: 'center',
     },
-    pfp: {
-        borderRadius: 1000,
-        width: 300,
-        height: 300,
-        marginTop: "30%",
-    },
-    name: {
-        fontSize: 30
-    },
-    points: {
-        fontSize: 15,
-        marginBottom: 175
-    },
-    rewards: {
-        color: "black",
-        width: "10%",
-    },
+    // pfp: {
+    //     borderRadius: 1000,
+    //     width: 300,
+    //     height: 300,
+    //     marginTop: "30%",
+    // },
+    // // name: {
+    // //     fontSize: 30,
+    // //     margin: 20,
+    // // },
+    // points: {
+    //     fontSize: 15,
+    //     marginBottom: 175
+    // },
+    // rewards: {
+    //     color: "black",
+    //     width: "10%",
+    // },
     table: {
         alignItems: "center",
     },
@@ -114,7 +135,7 @@ const styles = StyleSheet.create({
     },
     row: {
         flexDirection: "row",
-        width: "90%",
+        width: "100%",
         justifyContent: "space-evenly",
         // borderRadius: 5,
     },
@@ -122,7 +143,48 @@ const styles = StyleSheet.create({
         // fontSize: 15,
         borderColor: "#000000",
     },
-    footer: {
-        marginBottom: 50,
+    // footer: {
+    //     marginBottom: 50,
+    // },
+
+
+    name: {
+        fontSize: 30,
+        marginBottom: 20,
+        fontWeight: "bold",
+    },
+    cool_container: {
+        borderWidth: 1,
+        padding: 20,
+        borderRadius: 10,
+        width: "85%",
+        marginBottom: 15,
+    },
+    heading: {
+        fontSize: 30,
+        fontWeight: "bold",
+    },
+
+
+    data_box: {
+        flexDirection: "row",
+        justifyContent: "space-around",
+    },
+
+
+    sub_data_box: {
+        borderRadius: 1,
+        alignItems: "center",
+    },
+
+    whole_container: {
+        flex: 1,
+        justifyContent: 'flex-start',
+        position: "relative"
+    },
+    absolute_container: {
+        position: "aboslute",
+        bottom: 40,
+        left: "68%",
     }
 })
