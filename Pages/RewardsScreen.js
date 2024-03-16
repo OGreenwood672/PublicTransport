@@ -2,6 +2,6 @@
 import { Text } from "react-native";
 
 
-export default ProfileScreen = ({ navigation, route }) => {
+export default RewardsScreen = ({ navigation, route }) => {
     return <Text>This is { route.params.name }'s profile</Text>;
 };
