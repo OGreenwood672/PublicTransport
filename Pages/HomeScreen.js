@@ -14,17 +14,17 @@ function getTransactionTable(details) {
         return (
             <View style={styles.table}>
                 <Text style={styles.past_transactions}>Transaction History</Text>
-                <DataTable.Header style={styles.row}>
+                <DataTable.Row style={styles.row}>
                     <DataTable.Cell style={[styles.row_item, styles.header]}>Date</DataTable.Cell>
                     <DataTable.Cell style={[styles.row_item, styles.header]}>Cost</DataTable.Cell>
                     <DataTable.Cell style={[styles.row_item, styles.header]}>Type</DataTable.Cell>
                     <DataTable.Cell style={[styles.row_item, styles.header]}>Carbon Saved</DataTable.Cell>
                     <DataTable.Cell style={[styles.row_item, styles.header]}>Points</DataTable.Cell>
-                </DataTable.Header>
+                </DataTable.Row>
                 {details["history"].map((history, index) => (
                     <DataTable.Row key={index} style={styles.row}>
                         <DataTable.Cell style={styles.row_item}>{history["date"]}</DataTable.Cell>
-                        <DataTable.Cell style={styles.row_item}>{history["cost"]}</DataTable.Cell>
+                        <DataTable.Cell style={styles.row_item}>£{history["cost"]}</DataTable.Cell>
                         <DataTable.Cell style={styles.row_item}>{history["type"]}</DataTable.Cell>
                         <DataTable.Cell style={styles.row_item}>{history["carbon saved"]}</DataTable.Cell>
                         <DataTable.Cell style={styles.row_item}>{history["points"]}</DataTable.Cell>
@@ -103,31 +103,13 @@ const styles = StyleSheet.create({
         flexGrow: 1,
         alignItems: 'center',
     },
-    // pfp: {
-    //     borderRadius: 1000,
-    //     width: 300,
-    //     height: 300,
-    //     marginTop: "30%",
-    // },
-    // // name: {
-    // //     fontSize: 30,
-    // //     margin: 20,
-    // // },
-    // points: {
-    //     fontSize: 15,
-    //     marginBottom: 175
-    // },
-    // rewards: {
-    //     color: "black",
-    //     width: "10%",
-    // },
     table: {
         alignItems: "center",
+        width: "100%",
     },
     past_transactions: {
         fontSize: 30,
         padding: 10,
-        backgroundColor: "#43DEC9",
     },
     header: {
         padding: 10,
@@ -136,16 +118,12 @@ const styles = StyleSheet.create({
     row: {
         flexDirection: "row",
         width: "100%",
-        justifyContent: "space-evenly",
-        // borderRadius: 5,
     },
     row_item: {
-        // fontSize: 15,
-        borderColor: "#000000",
+        display: "flex",
+        justifyContent: "center", /* Center items horizontally */
+        alignItems: "center"
     },
-    // footer: {
-    //     marginBottom: 50,
-    // },
 
 
     name: {
