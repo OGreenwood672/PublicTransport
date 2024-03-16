@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 
     title: {
         margin: 30,
-        fontSize: 50,
+        fontSize: 49,
         fontWeight: "bold",
     },
 
@@ -69,7 +69,6 @@ function getRewards(category) {
             {filterRewards.map(({ _, DisplayName, price, id }) => (
                 <View key={id} style={styles.reward}>
                     <Image style={styles.images} source={images[`${id}`]} />
-                    {/* <Image style={styles.images} source={require("../assets/1.png")} /> */}
                     <View style={styles.info}>
                         <Text style={styles.info_text}>{DisplayName}</Text>
                         <Text style={styles.info_text}>CCC {price}</Text>
@@ -121,7 +120,7 @@ export default function RewardsScreen({ route, navigation }) {
     return (
         <ScrollView contentContainerStyle={styles.scroll_container}>
 
-            <Text style={styles.title}>Explore Econex Rewards!</Text>
+            <Text style={styles.title}>Explore EcoNex Rewards!</Text>
 
             {getTabBar()}
 

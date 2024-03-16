@@ -59,11 +59,16 @@ export default HomeScreen = ({ route, navigation }) => {
                 <Text style={{marginTop: 20}}>Hey,</Text>
                 <Text style={styles.name}>{route.params.name}</Text>
 
-                <View style={styles.cool_container}>
-                    <View style={[{flexDirection: "row"}, {marginBottom: 5}]}>
-                        <Text>Coin Balance</Text>
+                <View style={styles.cool_container}>                    
+                    <View style={{flexDirection: "row"}}>
+
+                        <View>
+                            <Text>Coin Balance</Text>
+                            <Text style={styles.heading}>CCC: {details["points"]}</Text>
+
+                        </View>
+                        <Image style={styles.logo} source={require("../assets/logo.png")} />
                     </View>
-                    <Text style={styles.heading}>CCC: {details["points"]}</Text>
                 </View>
 
                 <View style={[styles.data_box, styles.cool_container]}>
@@ -141,6 +146,12 @@ const styles = StyleSheet.create({
     heading: {
         fontSize: 30,
         fontWeight: "bold",
+    },
+    logo: {
+        marginLeft: "30%",
+        right: 18,
+        width: 58,
+        height: 52
     },
 
 
