@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
 
 function pay(price, name, walletAddress, navigation) {
 
-
+    //Sriram PAY HERE
 
     navigation.navigate("Rewards", { name: name, walletAddress: walletAddress })
 

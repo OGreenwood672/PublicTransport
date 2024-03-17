@@ -35,6 +35,7 @@ function getTransactionTable(details, navigation) {
 }
 
 function getDetails(name) {
+    // GET DETAILS HERE SRIRAM
 
     for (let i=0; i<data.length; i++) {
         if (data[i]["name"] == name) {
@@ -44,6 +45,21 @@ function getDetails(name) {
     return {
         "points": 0
     }
+
+    // In the form of a JS object, with attr like:
+    // [
+    //     {
+    //         "name": "<WalletAddress>",
+    //         "points": 163.54,
+    //         "history": [
+    //             {
+    //                 "timestamp": "161904u1903u4",
+    //                 "cost": "6.40",
+    //                 "points": 240
+    //             },
+    //         ]
+    //     }
+    // ]
 
 }
 
@@ -73,7 +89,7 @@ export default HomeScreen = ({ route, navigation }) => {
                 </View>
 
                 <View style={[styles.data_box, styles.cool_container]}>
-
+                    {/* Sriram FIX HERE */}
                     <View style={styles.sub_data_box}>
                         <Text>Total Earned</Text>
                         <Text>^ 4.5%</Text>
