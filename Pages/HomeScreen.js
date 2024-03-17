@@ -3,6 +3,7 @@ import { ScrollView, View, Text, Image, StyleSheet, TouchableOpacity } from "rea
 import { DataTable } from 'react-native-paper'; 
 
 import Button from "../components/button";
+import TabBar from "../components/tabbar";
 
 
 import data from "../assets/backend.json";
@@ -54,6 +55,8 @@ export default HomeScreen = ({ route, navigation }) => {
         <View style={styles.whole_container}>
             <ScrollView contentContainerStyle={styles.container}>
 
+                <View style={{marginTop: 40}} />
+
                 <Text style={{marginTop: 20}}>Hey,</Text>
                 <Text style={styles.name}>{route.params.name}</Text>
 
@@ -88,14 +91,7 @@ export default HomeScreen = ({ route, navigation }) => {
 
             </ScrollView>
             <View style={styles.absolute_container}>
-                {Button(
-                    "Rewards",
-                    "white",
-                    "black",
-                    110,
-                    65,
-                    () => navigation.navigate('Rewards', { walletAddress: route.params.walletAddress })
-                )}
+                {TabBar(navigation, route.params.name, route.params.walletAddress)}
             </View>
         </View>
     );
@@ -170,8 +166,9 @@ const styles = StyleSheet.create({
         position: "relative"
     },
     absolute_container: {
-        position: "aboslute",
-        bottom: 40,
-        left: "68%",
+        position: "absolute",
+        bottom: 0,
+        left: 0,
+        width: "100%",
     }
 })

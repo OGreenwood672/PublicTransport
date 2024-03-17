@@ -2,7 +2,19 @@
     {
         "genre": "Merch",
         "DisplayName": "Jumper",
-        "price": 20000,
+        "price": 19999,
         "id": "1"
+    },
+    {
+        "genre": "Merch",
+        "DisplayName": "Jumper",
+        "price": 15000,
+        "id": "2"
+    },
+    {
+        "genre": "Merch",
+        "DisplayName": "Jumper",
+        "price": 17500,
+        "id": "3"
     }
 ]

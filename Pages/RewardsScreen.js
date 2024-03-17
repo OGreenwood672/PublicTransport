@@ -4,15 +4,19 @@ import { Text, ScrollView, StyleSheet, View, Image, TouchableOpacity } from "rea
 import Button from "../components/button";
 
 import rewards from "../assets/rewards.json"
+import TabBar from "../components/tabbar";
 
 const images = {
-    "1": require("../assets/1.png")
+    "1": require("../assets/1.png"),
+    "2": require("../assets/2.png"),
+    "3": require("../assets/3.png"),
 }
 
 const styles = StyleSheet.create({
 
     scroll_container: {
         alignItems: 'center',
+        flexGrow: 1,
     },
 
     title: {
@@ -33,7 +37,7 @@ const styles = StyleSheet.create({
 
     reward: {
         margin: 10,
-        height: 190,
+        height: 250,
         borderWidth: 10,
         borderRadius: 10,
         backgroundColor: "black",
@@ -41,7 +45,7 @@ const styles = StyleSheet.create({
 
     images: {
         width: 370,
-        height: "75%",
+        height: "80%",
     },
 
     info: {
@@ -57,25 +61,37 @@ const styles = StyleSheet.create({
     info_text: {
         color: "white",
         fontSize: 20,
+    },
+
+    whole_container: {
+        flex: 1,
+        justifyContent: 'flex-start',
+        position: "relative",
+        // height: "100%",
+    },
+    absolute_container: {
+        position: "absolute",
+        bottom: 0,
+        left: 0,
+        width: "100%",
     }
 
 });
 
-function toPay(price, walletAddress, navigation) {
+function toPay(price, name, walletAddress, navigation) {
 
-    navigation.navigate("Payment", {price: price, walletAddress: walletAddress});
+    navigation.navigate("Payment", {price: price, name: name, walletAddress: walletAddress});
 
 }
 
-function getRewards(category, walletAddress, navigation) {
-
-
+function getRewards(category, name, walletAddress, navigation) {
 
     let filterRewards = rewards.filter(reward => (category == "All" || reward["genre"] == category));
     return (
         <View>
+            <View style={{margin: 10,}}/>
             {filterRewards.map(({ _, DisplayName, price, id }) => (
-                <TouchableOpacity key={id} onPress={() => toPay(price, walletAddress, navigation)}>
+                <TouchableOpacity key={id} onPress={() => toPay(price, name, walletAddress, navigation)}>
                     <View style={styles.reward}>
                         <Image style={styles.images} source={images[`${id}`]} />
                         <View style={styles.info}>
@@ -128,16 +144,25 @@ export default function RewardsScreen({ route, navigation }) {
     }
     
     return (
-        <ScrollView contentContainerStyle={styles.scroll_container}>
+        <View style={styles.whole_container}>
+            <ScrollView contentContainerStyle={styles.scroll_container}>
 
-            <Text style={styles.title}>Explore EcoNex Rewards!</Text>
-
-            {getTabBar()}
-
-            {getRewards(tab, route.params.walletAddress, navigation)}
+                <View style={{marginTop: 40}} />
 
 
-        </ScrollView>
+                <Text style={styles.title}>Explore EcoNex Rewards!</Text>
+
+                {getTabBar()}
+
+                {getRewards(tab, route.params.name, route.params.walletAddress, navigation)}
+
+                <View style={{marginBottom: 100}} />
+
+            </ScrollView>
+            <View style={styles.absolute_container}>
+                {TabBar(navigation, route.params.name, route.params.walletAddress)}
+            </View>
+        </View>
     )
 
 };

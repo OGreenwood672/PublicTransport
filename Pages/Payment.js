@@ -12,11 +12,11 @@ const styles = StyleSheet.create({
 });
 
 
-function pay(price, walletAddress, navigation) {
+function pay(price, name, walletAddress, navigation) {
 
 
 
-    navigation.navigate("Rewards", { walletAddress: walletAddress })
+    navigation.navigate("Rewards", { name: name, walletAddress: walletAddress })
 
 }
 
@@ -25,7 +25,7 @@ export default function Payment({ navigation, route }) {
 
     return (
         <View style={styles.container}>
-            {Button(`Confirm Payment of CCC${route.params.price}`, "white", "black", 200, 100, () => pay(route.params.price, route.params.walletAddress, navigation))}
+            {Button(`Confirm Payment of CCC${route.params.price}`, "white", "black", 200, 100, () => pay(route.params.price, route.params.name, route.params.walletAddress, navigation))}
         </View>
     )
 

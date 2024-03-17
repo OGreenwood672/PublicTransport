@@ -21,6 +21,9 @@ export default function ConnectWalletPage({ route, navigation}) {
     return (
         <View style={{alignItems: "center"}}>
 
+            <View style={{marginTop: 40}} />
+
+
             <View style={{marginTop: "50%"}} />
 
             <Text style={styles.title}>EcoNex</Text>    
@@ -60,7 +63,6 @@ export default function ConnectWalletPage({ route, navigation}) {
                 handleFormSubmit
             )
             }
-
 
         </View>
     )

@@ -14,12 +14,13 @@ export default App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Information" component={ ConnectWalletPage } />
+        <Stack.Screen name="Information" options={{ headerShown: false }} component={ ConnectWalletPage } />
         <Stack.Screen
           name="Home"
           component={ HomeScreen }
+          options={{ headerShown: false }}
         />
-        <Stack.Screen name="Rewards" component={ RewardsScreen } />
+        <Stack.Screen name="Rewards" options={{ headerShown: false }} component={ RewardsScreen } />
         <Stack.Screen name="Payment" component={ Payment } />
         <Stack.Screen name="Transaction" component={ TransactionPage } />
       </Stack.Navigator>
