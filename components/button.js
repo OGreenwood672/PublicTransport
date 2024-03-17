@@ -16,6 +16,7 @@ export default function Button(text, textColour, backgroundColour, width, height
         text: {
             color: textColour,
             fontSize: 15,
+            textAlign: "center"
         }
     });
 

@@ -23,7 +23,7 @@ export default function ConnectWalletPage({ route, navigation}) {
 
             <View style={{marginTop: "50%"}} />
 
-            <Text style={styles.title}>Econex</Text>    
+            <Text style={styles.title}>EcoNex</Text>    
 
             <View style={styles.container}>
                 <Text style={styles.input_label}>Username:</Text>

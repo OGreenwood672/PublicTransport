@@ -96,7 +96,7 @@ export default HomeScreen = ({ route, navigation }) => {
                     "black",
                     110,
                     65,
-                    () => navigation.navigate('Rewards', { name: details["name"] })
+                    () => navigation.navigate('Rewards', { walletAddress: route.params.walletAddress })
                 )}
             </View>
         </View>

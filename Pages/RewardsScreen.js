@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Text, ScrollView, StyleSheet, View, Image } from "react-native";
+import { Text, ScrollView, StyleSheet, View, Image, TouchableOpacity } from "react-native";
 import Button from "../components/button";
 
 import rewards from "../assets/rewards.json"
@@ -61,19 +61,29 @@ const styles = StyleSheet.create({
 
 });
 
-function getRewards(category) {
+function toPay(price, walletAddress, navigation) {
+
+    navigation.navigate("Payment", {price: price, walletAddress: walletAddress});
+
+}
+
+function getRewards(category, walletAddress, navigation) {
+
+
 
     let filterRewards = rewards.filter(reward => (category == "All" || reward["genre"] == category));
     return (
         <View>
             {filterRewards.map(({ _, DisplayName, price, id }) => (
-                <View key={id} style={styles.reward}>
-                    <Image style={styles.images} source={images[`${id}`]} />
-                    <View style={styles.info}>
-                        <Text style={styles.info_text}>{DisplayName}</Text>
-                        <Text style={styles.info_text}>CCC {price}</Text>
+                <TouchableOpacity key={id} onPress={() => toPay(price, walletAddress, navigation)}>
+                    <View style={styles.reward}>
+                        <Image style={styles.images} source={images[`${id}`]} />
+                        <View style={styles.info}>
+                            <Text style={styles.info_text}>{DisplayName}</Text>
+                            <Text style={styles.info_text}>CCC {price}</Text>
+                        </View>
                     </View>
-                </View>
+                </TouchableOpacity>
             ))}
         </View>
     );
@@ -124,7 +134,7 @@ export default function RewardsScreen({ route, navigation }) {
 
             {getTabBar()}
 
-            {getRewards(tab)}
+            {getRewards(tab, route.params.walletAddress, navigation)}
 
 
         </ScrollView>

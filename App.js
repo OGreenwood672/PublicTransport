@@ -6,6 +6,7 @@ import HomeScreen from './Pages/HomeScreen';
 import RewardsScreen from './Pages/RewardsScreen';
 import ConnectWalletPage from './Pages/ConnectWalletPage';
 import ChooseCar from './Pages/ChooseCar';
+import Payment from './Pages/Payment';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,7 @@ export default App = () => {
           component={ HomeScreen }
         />
         <Stack.Screen name="Rewards" component={ RewardsScreen } />
+        <Stack.Screen name="Payment" component={ Payment } />
       </Stack.Navigator>
     </NavigationContainer>
   );
