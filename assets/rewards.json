@@ -1,20 +1,75 @@
 [
     {
         "genre": "Merch",
-        "DisplayName": "Jumper",
-        "price": 19999,
+        "DisplayName": "Shirt with Logo",
+        "price": 14000,
         "id": "1"
     },
     {
         "genre": "Merch",
-        "DisplayName": "Jumper",
-        "price": 15000,
+        "DisplayName": "Hoodie",
+        "price": 19999,
         "id": "2"
     },
     {
         "genre": "Merch",
-        "DisplayName": "Jumper",
+        "DisplayName": "Sweatshirt",
         "price": 17500,
         "id": "3"
+    },
+    {
+        "genre": "Holidays",
+        "DisplayName": "Trip to Sweden",
+        "price": 205000,
+        "id": "4"
+    },
+    {
+        "genre": "Holidays",
+        "DisplayName": "Trip to Finland",
+        "price": 227500,
+        "id": "5"
+    },
+    {
+        "genre": "Holidays",
+        "DisplayName": "Trip to Denmark",
+        "price": 257500,
+        "id": "6"
+    },
+    {
+        "genre": "Discounts",
+        "DisplayName": "20% off Chiltern Railways",
+        "price": 300,
+        "id": "7"
+    },
+    {
+        "genre": "Discounts",
+        "DisplayName": "2 for 1 BA Flights",
+        "price": 250,
+        "id": "8"
+    },
+    {
+        "genre": "Discounts",
+        "DisplayName": "1/2 off an e-scooter ride",
+        "price": 400,
+        "id": "9"
+    },
+    {
+        "genre": "Vouchers",
+        "DisplayName": "1/2 off a Leon meal",
+        "price": 950,
+        "id": "10"
+    },
+    {
+        "genre": "Vouchers",
+        "DisplayName": "Free Innocent Drink",
+        "price": 750,
+        "id": "11"
+    },
+    {
+        "genre": "Vouchers",
+        "DisplayName": "2 for 1 Lush produts",
+        "price": 450,
+        "id": "12"
     }
+    
 ]
