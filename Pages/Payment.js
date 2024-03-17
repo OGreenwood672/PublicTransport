@@ -16,7 +16,7 @@ function pay(price, name, walletAddress, navigation) {
 
     //Sriram PAY HERE
 
-    navigation.navigate("Rewards", { name: name, walletAddress: walletAddress })
+    navigation.navigate("Rewards", { name: name, walletAddress: walletAddress });
 
 }
 
