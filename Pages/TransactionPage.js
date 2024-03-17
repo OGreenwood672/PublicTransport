@@ -65,7 +65,7 @@ export default function TransactionPage({ route, navigate }) {
     }
 
     function getCarbonSaved(distance, type) {
-        const avgCarbonPerMile = 0.05;
+        const avgCarbonPerMile = 0.5;
         const peopleSaved = {"scooter": 1, "bus": 29, "train": 700, "plane": 175};
         return peopleSaved[type] * avgCarbonPerMile * distance;
 
