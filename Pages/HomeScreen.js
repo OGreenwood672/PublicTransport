@@ -1,5 +1,5 @@
 
-import { ScrollView, View, Text, Image, StyleSheet } from "react-native";
+import { ScrollView, View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { DataTable } from 'react-native-paper'; 
 
 import Button from "../components/button";
@@ -8,7 +8,7 @@ import Button from "../components/button";
 import data from "../assets/backend.json";
 
 
-function getTransactionTable(details) {
+function getTransactionTable(details, navigation) {
 
     if ("history" in details && details["history"].length > 0) {
         return (
@@ -17,18 +17,16 @@ function getTransactionTable(details) {
                 <DataTable.Row style={styles.row}>
                     <DataTable.Cell style={[styles.row_item, styles.header]}>Date</DataTable.Cell>
                     <DataTable.Cell style={[styles.row_item, styles.header]}>Cost</DataTable.Cell>
-                    <DataTable.Cell style={[styles.row_item, styles.header]}>Type</DataTable.Cell>
-                    <DataTable.Cell style={[styles.row_item, styles.header]}>Carbon Saved</DataTable.Cell>
                     <DataTable.Cell style={[styles.row_item, styles.header]}>Points</DataTable.Cell>
                 </DataTable.Row>
                 {details["history"].map((history, index) => (
-                    <DataTable.Row key={index} style={styles.row}>
-                        <DataTable.Cell style={styles.row_item}>{history["date"]}</DataTable.Cell>
-                        <DataTable.Cell style={styles.row_item}>£{history["cost"]}</DataTable.Cell>
-                        <DataTable.Cell style={styles.row_item}>{history["type"]}</DataTable.Cell>
-                        <DataTable.Cell style={styles.row_item}>{history["carbon saved"]}</DataTable.Cell>
-                        <DataTable.Cell style={styles.row_item}>{history["points"]}</DataTable.Cell>
-                    </DataTable.Row>
+                    <TouchableOpacity key={index} onPress={() => {navigation.navigate("Transaction", {details: history})}}>
+                        <DataTable.Row style={styles.row}>
+                            <DataTable.Cell style={styles.row_item}>{history["date"]}</DataTable.Cell>
+                            <DataTable.Cell style={styles.row_item}>£{history["cost"]}</DataTable.Cell>
+                            <DataTable.Cell style={styles.row_item}>{history["points"]}</DataTable.Cell>
+                        </DataTable.Row>
+                    </TouchableOpacity>
                 ))}
             </View>
         )
@@ -85,7 +83,7 @@ export default HomeScreen = ({ route, navigation }) => {
                 </View>
 
                 <View style={styles.cool_container}>
-                    {getTransactionTable(details)}
+                    {getTransactionTable(details, navigation)}
                 </View>
 
             </ScrollView>
@@ -126,7 +124,7 @@ const styles = StyleSheet.create({
     },
     row_item: {
         display: "flex",
-        justifyContent: "center", /* Center items horizontally */
+        justifyContent: "center",
         alignItems: "center"
     },
 

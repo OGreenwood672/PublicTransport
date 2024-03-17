@@ -15,7 +15,7 @@ export default function ConnectWalletPage({ route, navigation}) {
     const [wallet, setWallet] = useState('');
 
     function handleFormSubmit() {
-        navigation.navigate('Choose Car', { name: name, walletAddress: wallet })
+        navigation.navigate('Home', { name: name, walletAddress: wallet })
     }
 
     return (

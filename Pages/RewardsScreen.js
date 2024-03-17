@@ -12,13 +12,13 @@ const images = {
 const styles = StyleSheet.create({
 
     scroll_container: {
-        // flexGrow: 1,
         alignItems: 'center',
     },
 
     title: {
-        margin: 30,
-        fontSize: 49,
+        marginTop: 30,
+        marginBottom: 30,
+        fontSize: 32,
         fontWeight: "bold",
     },
 

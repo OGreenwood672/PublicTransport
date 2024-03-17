@@ -7,14 +7,14 @@
         "history": [
             {
                 "date": "4/15/23",
-                "cost": 56.40,
+                "cost": "56.40",
                 "type": "BUS",
                 "carbon saved": "0.5",
                 "points": 240
             },
             {
                 "date": "4/15/23",
-                "cost": 56.40,
+                "cost": "56.40",
                 "type": "BUS",
                 "carbon saved": "0.5",
                 "points": 240
